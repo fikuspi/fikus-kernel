@@ -1,0 +1,8 @@
+Virtualization support in the Fikus kernel.
+
+00-INDEX
+	- this file.
+kvm/
+	- Kernel Virtual Machine.  See also http://fikus-kvm.org
+uml/
+	- User Mode Fikus, builds/runs Fikus kernel as a userspace program.

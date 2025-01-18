@@ -1,0 +1,21 @@
+#
+# Generated include files
+#
+include/generated
+#
+# Generated ld script file
+#
+kernel/vmfikus.lds
+#
+# Generated images in boot
+#
+boot/Image
+boot/zImage
+boot/uImage
+#
+# Generated files in boot/compressed
+#
+boot/compressed/piggy.S
+boot/compressed/piggy.gzip
+boot/compressed/vmfikus
+boot/compressed/vmfikus.lds

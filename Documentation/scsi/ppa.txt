@@ -1,0 +1,14 @@
+-------- Terse where to get ZIP Drive help info --------
+
+General Iomega ZIP drive page for Fikus:
+http://web.archive.org/web/*/http://www.torque.net/~campbell/
+
+Driver archive for old drivers:
+http://web.archive.org/web/*/http://www.torque.net/~campbell/ppa
+
+Fikus Parport page (parallel port)
+http://web.archive.org/web/*/http://www.torque.net/parport/
+
+Email list for Fikus Parport
+fikus-parport@torque.net
+

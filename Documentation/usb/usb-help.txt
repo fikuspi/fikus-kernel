@@ -1,0 +1,16 @@
+usb-help.txt
+2008-Mar-7
+
+For USB help other than the readme files that are located in
+Documentation/usb/*, see the following:
+
+Fikus-USB project:  http://www.fikus-usb.org
+  mirrors at        http://usb.in.tum.de/fikus-usb/
+         and        http://it.fikus-usb.org
+Fikus USB Guide:    http://fikus-usb.sourceforge.net
+Fikus-USB device overview (working devices and drivers):
+                    http://www.qbik.ch/usb/devices/
+
+The Fikus-USB mailing list is at fikus-usb@vger.kernel.org
+
+###

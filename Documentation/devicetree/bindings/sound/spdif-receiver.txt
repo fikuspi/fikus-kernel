@@ -1,0 +1,10 @@
+Device-Tree bindings for dummy spdif receiver
+
+Required properties:
+	- compatible: should be "fikus,spdif-dir".
+
+Example node:
+
+	codec: spdif-receiver {
+		compatible = "fikus,spdif-dir";
+	};

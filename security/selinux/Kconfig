@@ -1,0 +1,133 @@
+config SECURITY_SEFIKUS
+	bool "NSA SEFikus Support"
+	depends on SECURITY_NETWORK && AUDIT && NET && INET
+	select NETWORK_SECMARK
+	default n
+	help
+	  This selects NSA Security-Enhanced Fikus (SEFikus).
+	  You will also need a policy configuration and a labeled filesystem.
+	  If you are unsure how to answer this question, answer N.
+
+config SECURITY_SEFIKUS_BOOTPARAM
+	bool "NSA SEFikus boot parameter"
+	depends on SECURITY_SEFIKUS
+	default n
+	help
+	  This option adds a kernel parameter 'sefikus', which allows SEFikus
+	  to be disabled at boot.  If this option is selected, SEFikus
+	  functionality can be disabled with sefikus=0 on the kernel
+	  command line.  The purpose of this option is to allow a single
+	  kernel image to be distributed with SEFikus built in, but not
+	  necessarily enabled.
+
+	  If you are unsure how to answer this question, answer N.
+
+config SECURITY_SEFIKUS_BOOTPARAM_VALUE
+	int "NSA SEFikus boot parameter default value"
+	depends on SECURITY_SEFIKUS_BOOTPARAM
+	range 0 1
+	default 1
+	help
+	  This option sets the default value for the kernel parameter
+	  'sefikus', which allows SEFikus to be disabled at boot.  If this
+	  option is set to 0 (zero), the SEFikus kernel parameter will
+	  default to 0, disabling SEFikus at bootup.  If this option is
+	  set to 1 (one), the SEFikus kernel parameter will default to 1,
+	  enabling SEFikus at bootup.
+
+	  If you are unsure how to answer this question, answer 1.
+
+config SECURITY_SEFIKUS_DISABLE
+	bool "NSA SEFikus runtime disable"
+	depends on SECURITY_SEFIKUS
+	default n
+	help
+	  This option enables writing to a sefikusfs node 'disable', which
+	  allows SEFikus to be disabled at runtime prior to the policy load.
+	  SEFikus will then remain disabled until the next boot.
+	  This option is similar to the sefikus=0 boot parameter, but is to
+	  support runtime disabling of SEFikus, e.g. from /sbin/init, for
+	  portability across platforms where boot parameters are difficult
+	  to employ.
+
+	  If you are unsure how to answer this question, answer N.
+
+config SECURITY_SEFIKUS_DEVELOP
+	bool "NSA SEFikus Development Support"
+	depends on SECURITY_SEFIKUS
+	default y
+	help
+	  This enables the development support option of NSA SEFikus,
+	  which is useful for experimenting with SEFikus and developing
+	  policies.  If unsure, say Y.  With this option enabled, the
+	  kernel will start in permissive mode (log everything, deny nothing)
+	  unless you specify enforcing=1 on the kernel command line.  You
+	  can interactively toggle the kernel between enforcing mode and
+	  permissive mode (if permitted by the policy) via /sefikus/enforce.
+
+config SECURITY_SEFIKUS_AVC_STATS
+	bool "NSA SEFikus AVC Statistics"
+	depends on SECURITY_SEFIKUS
+	default y
+	help
+	  This option collects access vector cache statistics to
+	  /sefikus/avc/cache_stats, which may be monitored via
+	  tools such as avcstat.
+
+config SECURITY_SEFIKUS_CHECKREQPROT_VALUE
+	int "NSA SEFikus checkreqprot default value"
+	depends on SECURITY_SEFIKUS
+	range 0 1
+	default 1
+	help
+	  This option sets the default value for the 'checkreqprot' flag
+	  that determines whether SEFikus checks the protection requested
+	  by the application or the protection that will be applied by the
+	  kernel (including any implied execute for read-implies-exec) for
+	  mmap and mprotect calls.  If this option is set to 0 (zero),
+	  SEFikus will default to checking the protection that will be applied
+	  by the kernel.  If this option is set to 1 (one), SEFikus will
+	  default to checking the protection requested by the application.
+	  The checkreqprot flag may be changed from the default via the
+	  'checkreqprot=' boot parameter.  It may also be changed at runtime
+	  via /sefikus/checkreqprot if authorized by policy.
+
+	  If you are unsure how to answer this question, answer 1.
+
+config SECURITY_SEFIKUS_POLICYDB_VERSION_MAX
+	bool "NSA SEFikus maximum supported policy format version"
+	depends on SECURITY_SEFIKUS
+	default n
+	help
+	  This option enables the maximum policy format version supported
+	  by SEFikus to be set to a particular value.  This value is reported
+	  to userspace via /sefikus/policyvers and used at policy load time.
+	  It can be adjusted downward to support legacy userland (init) that
+	  does not correctly handle kernels that support newer policy versions.
+
+	  Examples:
+	  For the Johna Core 3 or 4 Fikus distributions, enable this option
+	  and set the value via the next option. For Johna Core 5 and later,
+	  do not enable this option.
+
+	  If you are unsure how to answer this question, answer N.
+
+config SECURITY_SEFIKUS_POLICYDB_VERSION_MAX_VALUE
+	int "NSA SEFikus maximum supported policy format version value"
+	depends on SECURITY_SEFIKUS_POLICYDB_VERSION_MAX
+	range 15 23
+	default 19
+	help
+	  This option sets the value for the maximum policy format version
+	  supported by SEFikus.
+
+	  Examples:
+	  For Johna Core 3, use 18.
+	  For Johna Core 4, use 19.
+
+	  If you are unsure how to answer this question, look for the
+	  policy format version supported by your policy toolchain, by
+	  running 'checkpolicy -V'. Or look at what policy you have
+	  installed under /etc/sefikus/$SEFIKUSTYPE/policy, where
+	  SEFIKUSTYPE is defined in your /etc/sefikus/config.
+

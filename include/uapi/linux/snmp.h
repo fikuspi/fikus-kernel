@@ -1,0 +1,299 @@
+/*
+ * Definitions for MIBs
+ *
+ * Author: Hideaki YOSHIFUJI <yoshfuji@fikus-ipv6.org>
+ */
+
+#ifndef _FIKUS_SNMP_H
+#define _FIKUS_SNMP_H
+
+/* ipstats mib definitions */
+/*
+ * RFC 1213:  MIB-II
+ * RFC 2011 (updates 1213):  SNMPv2-MIB-IP
+ * RFC 2863:  Interfaces Group MIB
+ * RFC 2465:  IPv6 MIB: General Group
+ * draft-ietf-ipv6-rfc2011-update-10.txt: MIB for IP: IP Statistics Tables
+ */
+enum
+{
+	IPSTATS_MIB_NUM = 0,
+/* frequently written fields in fast path, kept in same cache line */
+	IPSTATS_MIB_INPKTS,			/* InReceives */
+	IPSTATS_MIB_INOCTETS,			/* InOctets */
+	IPSTATS_MIB_INDELIVERS,			/* InDelivers */
+	IPSTATS_MIB_OUTFORWDATAGRAMS,		/* OutForwDatagrams */
+	IPSTATS_MIB_OUTPKTS,			/* OutRequests */
+	IPSTATS_MIB_OUTOCTETS,			/* OutOctets */
+/* other fields */
+	IPSTATS_MIB_INHDRERRORS,		/* InHdrErrors */
+	IPSTATS_MIB_INTOOBIGERRORS,		/* InTooBigErrors */
+	IPSTATS_MIB_INNOROUTES,			/* InNoRoutes */
+	IPSTATS_MIB_INADDRERRORS,		/* InAddrErrors */
+	IPSTATS_MIB_INUNKNOWNPROTOS,		/* InUnknownProtos */
+	IPSTATS_MIB_INTRUNCATEDPKTS,		/* InTruncatedPkts */
+	IPSTATS_MIB_INDISCARDS,			/* InDiscards */
+	IPSTATS_MIB_OUTDISCARDS,		/* OutDiscards */
+	IPSTATS_MIB_OUTNOROUTES,		/* OutNoRoutes */
+	IPSTATS_MIB_REASMTIMEOUT,		/* ReasmTimeout */
+	IPSTATS_MIB_REASMREQDS,			/* ReasmReqds */
+	IPSTATS_MIB_REASMOKS,			/* ReasmOKs */
+	IPSTATS_MIB_REASMFAILS,			/* ReasmFails */
+	IPSTATS_MIB_FRAGOKS,			/* FragOKs */
+	IPSTATS_MIB_FRAGFAILS,			/* FragFails */
+	IPSTATS_MIB_FRAGCREATES,		/* FragCreates */
+	IPSTATS_MIB_INMCASTPKTS,		/* InMcastPkts */
+	IPSTATS_MIB_OUTMCASTPKTS,		/* OutMcastPkts */
+	IPSTATS_MIB_INBCASTPKTS,		/* InBcastPkts */
+	IPSTATS_MIB_OUTBCASTPKTS,		/* OutBcastPkts */
+	IPSTATS_MIB_INMCASTOCTETS,		/* InMcastOctets */
+	IPSTATS_MIB_OUTMCASTOCTETS,		/* OutMcastOctets */
+	IPSTATS_MIB_INBCASTOCTETS,		/* InBcastOctets */
+	IPSTATS_MIB_OUTBCASTOCTETS,		/* OutBcastOctets */
+	IPSTATS_MIB_CSUMERRORS,			/* InCsumErrors */
+	IPSTATS_MIB_NOECTPKTS,			/* InNoECTPkts */
+	IPSTATS_MIB_ECT1PKTS,			/* InECT1Pkts */
+	IPSTATS_MIB_ECT0PKTS,			/* InECT0Pkts */
+	IPSTATS_MIB_CEPKTS,			/* InCEPkts */
+	__IPSTATS_MIB_MAX
+};
+
+/* icmp mib definitions */
+/*
+ * RFC 1213:  MIB-II ICMP Group
+ * RFC 2011 (updates 1213):  SNMPv2 MIB for IP: ICMP group
+ */
+enum
+{
+	ICMP_MIB_NUM = 0,
+	ICMP_MIB_INMSGS,			/* InMsgs */
+	ICMP_MIB_INERRORS,			/* InErrors */
+	ICMP_MIB_INDESTUNREACHS,		/* InDestUnreachs */
+	ICMP_MIB_INTIMEEXCDS,			/* InTimeExcds */
+	ICMP_MIB_INPARMPROBS,			/* InParmProbs */
+	ICMP_MIB_INSRCQUENCHS,			/* InSrcQuenchs */
+	ICMP_MIB_INREDIRECTS,			/* InRedirects */
+	ICMP_MIB_INECHOS,			/* InEchos */
+	ICMP_MIB_INECHOREPS,			/* InEchoReps */
+	ICMP_MIB_INTIMESTAMPS,			/* InTimestamps */
+	ICMP_MIB_INTIMESTAMPREPS,		/* InTimestampReps */
+	ICMP_MIB_INADDRMASKS,			/* InAddrMasks */
+	ICMP_MIB_INADDRMASKREPS,		/* InAddrMaskReps */
+	ICMP_MIB_OUTMSGS,			/* OutMsgs */
+	ICMP_MIB_OUTERRORS,			/* OutErrors */
+	ICMP_MIB_OUTDESTUNREACHS,		/* OutDestUnreachs */
+	ICMP_MIB_OUTTIMEEXCDS,			/* OutTimeExcds */
+	ICMP_MIB_OUTPARMPROBS,			/* OutParmProbs */
+	ICMP_MIB_OUTSRCQUENCHS,			/* OutSrcQuenchs */
+	ICMP_MIB_OUTREDIRECTS,			/* OutRedirects */
+	ICMP_MIB_OUTECHOS,			/* OutEchos */
+	ICMP_MIB_OUTECHOREPS,			/* OutEchoReps */
+	ICMP_MIB_OUTTIMESTAMPS,			/* OutTimestamps */
+	ICMP_MIB_OUTTIMESTAMPREPS,		/* OutTimestampReps */
+	ICMP_MIB_OUTADDRMASKS,			/* OutAddrMasks */
+	ICMP_MIB_OUTADDRMASKREPS,		/* OutAddrMaskReps */
+	ICMP_MIB_CSUMERRORS,			/* InCsumErrors */
+	__ICMP_MIB_MAX
+};
+
+#define __ICMPMSG_MIB_MAX 512	/* Out+In for all 8-bit ICMP types */
+
+/* icmp6 mib definitions */
+/*
+ * RFC 2466:  ICMPv6-MIB
+ */
+enum
+{
+	ICMP6_MIB_NUM = 0,
+	ICMP6_MIB_INMSGS,			/* InMsgs */
+	ICMP6_MIB_INERRORS,			/* InErrors */
+	ICMP6_MIB_OUTMSGS,			/* OutMsgs */
+	ICMP6_MIB_OUTERRORS,			/* OutErrors */
+	ICMP6_MIB_CSUMERRORS,			/* InCsumErrors */
+	__ICMP6_MIB_MAX
+};
+
+#define __ICMP6MSG_MIB_MAX 512 /* Out+In for all 8-bit ICMPv6 types */
+
+/* tcp mib definitions */
+/*
+ * RFC 1213:  MIB-II TCP group
+ * RFC 2012 (updates 1213):  SNMPv2-MIB-TCP
+ */
+enum
+{
+	TCP_MIB_NUM = 0,
+	TCP_MIB_RTOALGORITHM,			/* RtoAlgorithm */
+	TCP_MIB_RTOMIN,				/* RtoMin */
+	TCP_MIB_RTOMAX,				/* RtoMax */
+	TCP_MIB_MAXCONN,			/* MaxConn */
+	TCP_MIB_ACTIVEOPENS,			/* ActiveOpens */
+	TCP_MIB_PASSIVEOPENS,			/* PassiveOpens */
+	TCP_MIB_ATTEMPTFAILS,			/* AttemptFails */
+	TCP_MIB_ESTABRESETS,			/* EstabResets */
+	TCP_MIB_CURRESTAB,			/* CurrEstab */
+	TCP_MIB_INSEGS,				/* InSegs */
+	TCP_MIB_OUTSEGS,			/* OutSegs */
+	TCP_MIB_RETRANSSEGS,			/* RetransSegs */
+	TCP_MIB_INERRS,				/* InErrs */
+	TCP_MIB_OUTRSTS,			/* OutRsts */
+	TCP_MIB_CSUMERRORS,			/* InCsumErrors */
+	__TCP_MIB_MAX
+};
+
+/* udp mib definitions */
+/*
+ * RFC 1213:  MIB-II UDP group
+ * RFC 2013 (updates 1213):  SNMPv2-MIB-UDP
+ */
+enum
+{
+	UDP_MIB_NUM = 0,
+	UDP_MIB_INDATAGRAMS,			/* InDatagrams */
+	UDP_MIB_NOPORTS,			/* NoPorts */
+	UDP_MIB_INERRORS,			/* InErrors */
+	UDP_MIB_OUTDATAGRAMS,			/* OutDatagrams */
+	UDP_MIB_RCVBUFERRORS,			/* RcvbufErrors */
+	UDP_MIB_SNDBUFERRORS,			/* SndbufErrors */
+	UDP_MIB_CSUMERRORS,			/* InCsumErrors */
+	__UDP_MIB_MAX
+};
+
+/* fikus mib definitions */
+enum
+{
+	FIKUS_MIB_NUM = 0,
+	FIKUS_MIB_SYNCOOKIESSENT,		/* SyncookiesSent */
+	FIKUS_MIB_SYNCOOKIESRECV,		/* SyncookiesRecv */
+	FIKUS_MIB_SYNCOOKIESFAILED,		/* SyncookiesFailed */
+	FIKUS_MIB_EMBRYONICRSTS,		/* EmbryonicRsts */
+	FIKUS_MIB_PRUNECALLED,			/* PruneCalled */
+	FIKUS_MIB_RCVPRUNED,			/* RcvPruned */
+	FIKUS_MIB_OFOPRUNED,			/* OfoPruned */
+	FIKUS_MIB_OUTOFWINDOWICMPS,		/* OutOfWindowIcmps */
+	FIKUS_MIB_LOCKDROPPEDICMPS,		/* LockDroppedIcmps */
+	FIKUS_MIB_ARPFILTER,			/* ArpFilter */
+	FIKUS_MIB_TIMEWAITED,			/* TimeWaited */
+	FIKUS_MIB_TIMEWAITRECYCLED,		/* TimeWaitRecycled */
+	FIKUS_MIB_TIMEWAITKILLED,		/* TimeWaitKilled */
+	FIKUS_MIB_PAWSPASSIVEREJECTED,		/* PAWSPassiveRejected */
+	FIKUS_MIB_PAWSACTIVEREJECTED,		/* PAWSActiveRejected */
+	FIKUS_MIB_PAWSESTABREJECTED,		/* PAWSEstabRejected */
+	FIKUS_MIB_DELAYEDACKS,			/* DelayedACKs */
+	FIKUS_MIB_DELAYEDACKLOCKED,		/* DelayedACKLocked */
+	FIKUS_MIB_DELAYEDACKLOST,		/* DelayedACKLost */
+	FIKUS_MIB_LISTENOVERFLOWS,		/* ListenOverflows */
+	FIKUS_MIB_LISTENDROPS,			/* ListenDrops */
+	FIKUS_MIB_TCPPREQUEUED,			/* TCPPrequeued */
+	FIKUS_MIB_TCPDIRECTCOPYFROMBACKLOG,	/* TCPDirectCopyFromBacklog */
+	FIKUS_MIB_TCPDIRECTCOPYFROMPREQUEUE,	/* TCPDirectCopyFromPrequeue */
+	FIKUS_MIB_TCPPREQUEUEDROPPED,		/* TCPPrequeueDropped */
+	FIKUS_MIB_TCPHPHITS,			/* TCPHPHits */
+	FIKUS_MIB_TCPHPHITSTOUSER,		/* TCPHPHitsToUser */
+	FIKUS_MIB_TCPPUREACKS,			/* TCPPureAcks */
+	FIKUS_MIB_TCPHPACKS,			/* TCPHPAcks */
+	FIKUS_MIB_TCPRENORECOVERY,		/* TCPRenoRecovery */
+	FIKUS_MIB_TCPSACKRECOVERY,		/* TCPSackRecovery */
+	FIKUS_MIB_TCPSACKRENEGING,		/* TCPSACKReneging */
+	FIKUS_MIB_TCPFACKREORDER,		/* TCPFACKReorder */
+	FIKUS_MIB_TCPSACKREORDER,		/* TCPSACKReorder */
+	FIKUS_MIB_TCPRENOREORDER,		/* TCPRenoReorder */
+	FIKUS_MIB_TCPTSREORDER,			/* TCPTSReorder */
+	FIKUS_MIB_TCPFULLUNDO,			/* TCPFullUndo */
+	FIKUS_MIB_TCPPARTIALUNDO,		/* TCPPartialUndo */
+	FIKUS_MIB_TCPDSACKUNDO,			/* TCPDSACKUndo */
+	FIKUS_MIB_TCPLOSSUNDO,			/* TCPLossUndo */
+	FIKUS_MIB_TCPLOSTRETRANSMIT,		/* TCPLostRetransmit */
+	FIKUS_MIB_TCPRENOFAILURES,		/* TCPRenoFailures */
+	FIKUS_MIB_TCPSACKFAILURES,		/* TCPSackFailures */
+	FIKUS_MIB_TCPLOSSFAILURES,		/* TCPLossFailures */
+	FIKUS_MIB_TCPFASTRETRANS,		/* TCPFastRetrans */
+	FIKUS_MIB_TCPFORWARDRETRANS,		/* TCPForwardRetrans */
+	FIKUS_MIB_TCPSLOWSTARTRETRANS,		/* TCPSlowStartRetrans */
+	FIKUS_MIB_TCPTIMEOUTS,			/* TCPTimeouts */
+	FIKUS_MIB_TCPLOSSPROBES,		/* TCPLossProbes */
+	FIKUS_MIB_TCPLOSSPROBERECOVERY,		/* TCPLossProbeRecovery */
+	FIKUS_MIB_TCPRENORECOVERYFAIL,		/* TCPRenoRecoveryFail */
+	FIKUS_MIB_TCPSACKRECOVERYFAIL,		/* TCPSackRecoveryFail */
+	FIKUS_MIB_TCPSCHEDULERFAILED,		/* TCPSchedulerFailed */
+	FIKUS_MIB_TCPRCVCOLLAPSED,		/* TCPRcvCollapsed */
+	FIKUS_MIB_TCPDSACKOLDSENT,		/* TCPDSACKOldSent */
+	FIKUS_MIB_TCPDSACKOFOSENT,		/* TCPDSACKOfoSent */
+	FIKUS_MIB_TCPDSACKRECV,			/* TCPDSACKRecv */
+	FIKUS_MIB_TCPDSACKOFORECV,		/* TCPDSACKOfoRecv */
+	FIKUS_MIB_TCPABORTONDATA,		/* TCPAbortOnData */
+	FIKUS_MIB_TCPABORTONCLOSE,		/* TCPAbortOnClose */
+	FIKUS_MIB_TCPABORTONMEMORY,		/* TCPAbortOnMemory */
+	FIKUS_MIB_TCPABORTONTIMEOUT,		/* TCPAbortOnTimeout */
+	FIKUS_MIB_TCPABORTONLINGER,		/* TCPAbortOnLinger */
+	FIKUS_MIB_TCPABORTFAILED,		/* TCPAbortFailed */
+	FIKUS_MIB_TCPMEMORYPRESSURES,		/* TCPMemoryPressures */
+	FIKUS_MIB_TCPSACKDISCARD,		/* TCPSACKDiscard */
+	FIKUS_MIB_TCPDSACKIGNOREDOLD,		/* TCPSACKIgnoredOld */
+	FIKUS_MIB_TCPDSACKIGNOREDNOUNDO,	/* TCPSACKIgnoredNoUndo */
+	FIKUS_MIB_TCPSPURIOUSRTOS,		/* TCPSpuriousRTOs */
+	FIKUS_MIB_TCPMD5NOTFOUND,		/* TCPMD5NotFound */
+	FIKUS_MIB_TCPMD5UNEXPECTED,		/* TCPMD5Unexpected */
+	FIKUS_MIB_SACKSHIFTED,
+	FIKUS_MIB_SACKMERGED,
+	FIKUS_MIB_SACKSHIFTFALLBACK,
+	FIKUS_MIB_TCPBACKLOGDROP,
+	FIKUS_MIB_TCPMINTTLDROP, /* RFC 5082 */
+	FIKUS_MIB_TCPDEFERACCEPTDROP,
+	FIKUS_MIB_IPRPFILTER, /* IP Reverse Path Filter (rp_filter) */
+	FIKUS_MIB_TCPTIMEWAITOVERFLOW,		/* TCPTimeWaitOverflow */
+	FIKUS_MIB_TCPREQQFULLDOCOOKIES,		/* TCPReqQFullDoCookies */
+	FIKUS_MIB_TCPREQQFULLDROP,		/* TCPReqQFullDrop */
+	FIKUS_MIB_TCPRETRANSFAIL,		/* TCPRetransFail */
+	FIKUS_MIB_TCPRCVCOALESCE,		/* TCPRcvCoalesce */
+	FIKUS_MIB_TCPOFOQUEUE,			/* TCPOFOQueue */
+	FIKUS_MIB_TCPOFODROP,			/* TCPOFODrop */
+	FIKUS_MIB_TCPOFOMERGE,			/* TCPOFOMerge */
+	FIKUS_MIB_TCPCHALLENGEACK,		/* TCPChallengeACK */
+	FIKUS_MIB_TCPSYNCHALLENGE,		/* TCPSYNChallenge */
+	FIKUS_MIB_TCPFASTOPENACTIVE,		/* TCPFastOpenActive */
+	FIKUS_MIB_TCPFASTOPENPASSIVE,		/* TCPFastOpenPassive*/
+	FIKUS_MIB_TCPFASTOPENPASSIVEFAIL,	/* TCPFastOpenPassiveFail */
+	FIKUS_MIB_TCPFASTOPENLISTENOVERFLOW,	/* TCPFastOpenListenOverflow */
+	FIKUS_MIB_TCPFASTOPENCOOKIEREQD,	/* TCPFastOpenCookieReqd */
+	FIKUS_MIB_TCPSPURIOUS_RTX_HOSTQUEUES, /* TCPSpuriousRtxHostQueues */
+	FIKUS_MIB_BUSYPOLLRXPACKETS,		/* BusyPollRxPackets */
+	__FIKUS_MIB_MAX
+};
+
+/* fikus Xfrm mib definitions */
+enum
+{
+	FIKUS_MIB_XFRMNUM = 0,
+	FIKUS_MIB_XFRMINERROR,			/* XfrmInError */
+	FIKUS_MIB_XFRMINBUFFERERROR,		/* XfrmInBufferError */
+	FIKUS_MIB_XFRMINHDRERROR,		/* XfrmInHdrError */
+	FIKUS_MIB_XFRMINNOSTATES,		/* XfrmInNoStates */
+	FIKUS_MIB_XFRMINSTATEPROTOERROR,	/* XfrmInStateProtoError */
+	FIKUS_MIB_XFRMINSTATEMODEERROR,		/* XfrmInStateModeError */
+	FIKUS_MIB_XFRMINSTATESEQERROR,		/* XfrmInStateSeqError */
+	FIKUS_MIB_XFRMINSTATEEXPIRED,		/* XfrmInStateExpired */
+	FIKUS_MIB_XFRMINSTATEMISMATCH,		/* XfrmInStateMismatch */
+	FIKUS_MIB_XFRMINSTATEINVALID,		/* XfrmInStateInvalid */
+	FIKUS_MIB_XFRMINTMPLMISMATCH,		/* XfrmInTmplMismatch */
+	FIKUS_MIB_XFRMINNOPOLS,			/* XfrmInNoPols */
+	FIKUS_MIB_XFRMINPOLBLOCK,		/* XfrmInPolBlock */
+	FIKUS_MIB_XFRMINPOLERROR,		/* XfrmInPolError */
+	FIKUS_MIB_XFRMOUTERROR,			/* XfrmOutError */
+	FIKUS_MIB_XFRMOUTBUNDLEGENERROR,	/* XfrmOutBundleGenError */
+	FIKUS_MIB_XFRMOUTBUNDLECHECKERROR,	/* XfrmOutBundleCheckError */
+	FIKUS_MIB_XFRMOUTNOSTATES,		/* XfrmOutNoStates */
+	FIKUS_MIB_XFRMOUTSTATEPROTOERROR,	/* XfrmOutStateProtoError */
+	FIKUS_MIB_XFRMOUTSTATEMODEERROR,	/* XfrmOutStateModeError */
+	FIKUS_MIB_XFRMOUTSTATESEQERROR,		/* XfrmOutStateSeqError */
+	FIKUS_MIB_XFRMOUTSTATEEXPIRED,		/* XfrmOutStateExpired */
+	FIKUS_MIB_XFRMOUTPOLBLOCK,		/* XfrmOutPolBlock */
+	FIKUS_MIB_XFRMOUTPOLDEAD,		/* XfrmOutPolDead */
+	FIKUS_MIB_XFRMOUTPOLERROR,		/* XfrmOutPolError */
+	FIKUS_MIB_XFRMFWDHDRERROR,		/* XfrmFwdHdrError*/
+	FIKUS_MIB_XFRMOUTSTATEINVALID,		/* XfrmOutStateInvalid */
+	FIKUS_MIB_XFRMACQUIREERROR,		/* XfrmAcquireError */
+	__FIKUS_MIB_XFRMMAX
+};
+
+#endif	/* _FIKUS_SNMP_H */
