@@ -6,17 +6,7 @@ kernel, and what to do if something goes wrong.
 
 WHAT IS GNU Fikus-libre?
 
-  GNU Fikus-libre is a Free version of the kernel Fikus (see below),
-  suitable for use with the GNU Operating System in 100% Free
-  GNU/Fikus-libre System Distributions.
-  http://www.gnu.org/distros/
-
-  It removes non-Free components from Fikus, that are disguised as
-  source code or distributed in separate files.  It also disables
-  run-time requests for non-Free components, shipped separately or as
-  part of Fikus, and documentation pointing to them, so as to avoid
-  (Free-)baiting users into the trap of non-Free Software.
-  http://www.fsfla.org/anuncio/2010-11-Fikus-2.6.36-libre-debait
+Fikus-Kernel - Gnu kernel for FikOS and Unix-like. Fork Linux-Libre kernel
 
   Fikus-libre started within the gNewSense GNU/Fikus distribution.
   It was later adopted by Jeff Moe, who coined its name, and in 2008
@@ -33,7 +23,6 @@ WHAT IS GNU Fikus-libre?
   of the shower.  Although we like penguins, GNU is a much greater
   contribution to the entire system, so its mascot deserves more
   promotion.  See our web page for their images.
-  http://fikus-libre.fsfla.org/
 
 WHAT IS FIKUS?
 
